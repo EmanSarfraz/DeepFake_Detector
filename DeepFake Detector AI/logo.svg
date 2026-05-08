@@ -1,0 +1,18 @@
+<svg width="200" height="55" viewBox="0 0 200 55" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Magnifying glass circle -->
+  <circle cx="28" cy="24" r="16" fill="#ebe6ff" stroke="#6b4fd4" stroke-width="2.5"/>
+  <!-- Play triangle inside -->
+  <polygon points="22,17 22,31 36,24" fill="#6b4fd4"/>
+  <!-- Magnifying glass handle -->
+  <line x1="40" y1="36" x2="52" y2="48" stroke="#6b4fd4" stroke-width="4" stroke-linecap="round"/>
+  <!-- Scan lines -->
+  <line x1="14" y1="22" x2="42" y2="22" stroke="#5038b8" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+  <line x1="14" y1="27" x2="42" y2="27" stroke="#5038b8" stroke-width="1.2" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- DeepFake text -->
+  <text x="62" y="22" font-family="Georgia, serif" font-size="14" font-weight="700" fill="#1a1440">Deep<tspan fill="#6b4fd4">Fake</tspan></text>
+  <!-- Detector text -->
+  <text x="63" y="36" font-family="Arial, sans-serif" font-size="9" font-weight="500" fill="#4a3880" letter-spacing="2">DETECTOR</text>
+
+</svg>

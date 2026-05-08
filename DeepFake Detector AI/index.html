@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DeepFake Detector</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <img src="logo.svg" alt="DeepFake Detector Logo" style="height:38px; width:auto;"/>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#why">Why Use It</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="badge">AI Video Analyzer</div>
+    <h1>Detect <span>DeepFakes</span><br/>in Seconds</h1>
+    <p class="hero-sub">Upload any video and our AI will instantly analyze whether it is real or AI-generated. Fast, accurate, and free to use.</p>
+
+    <div class="upload-card">
+      <div class="steps">
+        <div class="step"><div class="step-num">01</div><div class="step-text">Upload video</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-text">AI scans it</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-text">Get result</div></div>
+      </div>
+
+      <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+        <div class="upload-icon">🎬</div>
+        <div class="upload-title" id="uploadTitle">Click to upload a video</div>
+        <div class="upload-sub" id="uploadSub">MP4 · MOV · AVI — max 100MB</div>
+      </div>
+
+      <input type="file" id="fileInput" accept="video/*" onchange="fileSelected(this)"/>
+      <div class="scanning-text" id="scanningText">Analyzing your video<span class="dot-anim"></span></div>
+      <button class="btn" onclick="analyzeVideo()">Analyze Video</button>
+
+      <div class="result-box" id="resultBox">
+        <div class="result-label" id="resultLabel"></div>
+        <div class="result-desc" id="resultDesc"></div>
+        <div class="bar-wrap"><div id="barFill" class="bar-fill"></div></div>
+        <div class="bar-labels">
+          <span>Confidence</span>
+          <span id="confidenceVal">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confidence level -->
+  <div class="bar-labels">
+    <span id="confidenceVal" style="font-size:22px; font-weight:700; color:#6b4fd4;">0%</span>
+    <span>AI Confidence Score</span>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-badge fade-up">About</div>
+    <div class="section-title fade-up">What is DeepFake Detector?</div>
+    <p class="section-desc fade-up">DeepFake Detector is a free AI-powered tool that helps you verify the authenticity of any video. With the rise of AI-generated content, it has become harder to tell what is real. Our tool uses advanced machine learning to analyze facial patterns, pixel inconsistencies, and audio-visual mismatches to give you an accurate result in seconds.</p>
+    <div class="about-grid">
+      <div class="about-card fade-up"><div class="about-icon">🤖</div><h3>AI Powered</h3><p>Uses state-of-the-art deep learning models trained on thousands of real and fake videos.</p></div>
+      <div class="about-card fade-up"><div class="about-icon">⚡</div><h3>Fast Analysis</h3><p>Get results in seconds — no waiting, no signup required. Just upload and detect.</p></div>
+      <div class="about-card fade-up"><div class="about-icon">🔒</div><h3>Privacy First</h3><p>Your videos are never stored or shared. Analysis happens securely and is deleted after.</p></div>
+      <div class="about-card fade-up"><div class="about-icon">🎯</div><h3>High Accuracy</h3><p>Our model achieves over 90% accuracy on standard deepfake detection benchmarks.</p></div>
+    </div>
+  </section>
+
+  <!-- How it works? -->
+  <div class="how-bg">
+    <section id="how">
+      <div class="section-badge fade-up">Process</div>
+      <div class="section-title fade-up">How Does It Work?</div>
+      <p class="section-desc fade-up">Our detection process runs in four intelligent stages to give you the most accurate result possible.</p>
+      <div class="how-steps">
+        <div class="how-step fade-up"><div class="how-num">1</div><h3>Upload Video</h3><p>You upload your video file — MP4, MOV, or AVI format supported up to 100MB.</p></div>
+        <div class="how-step fade-up"><div class="how-num">2</div><h3>Frame Extraction</h3><p>Our system extracts key frames from the video to analyze individual moments.</p></div>
+        <div class="how-step fade-up"><div class="how-num">3</div><h3>AI Analysis</h3><p>Deep learning models scan for facial artifacts, unnatural blending, and AI signatures.</p></div>
+        <div class="how-step fade-up"><div class="how-num">4</div><h3>Result Generated</h3><p>You receive a clear verdict — Real or Deepfake — along with a confidence score.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Why use it? -->
+  <section id="why">
+    <div class="section-badge fade-up">Why Use It</div>
+    <div class="section-title fade-up">Why Does This Matter?</div>
+    <p class="section-desc fade-up">Deepfakes are being used to spread misinformation, fraud, and fake news. Here is why you should verify videos before trusting them.</p>
+    <div class="why-list">
+      <div class="why-item fade-up"><div class="why-icon">📰</div><div><h3>Stop Misinformation</h3><p>Fake videos of politicians, celebrities, and public figures are spreading rapidly on social media. Verify before you share.</p></div></div>
+      <div class="why-item fade-up"><div class="why-icon">🛡️</div><div><h3>Protect Yourself</h3><p>Deepfakes are used in scams and fraud. Detecting them early can protect you from being deceived or manipulated.</p></div></div>
+      <div class="why-item fade-up"><div class="why-icon">⚖️</div><div><h3>Legal Evidence</h3><p>In legal or professional settings, confirming a video is authentic adds credibility and trust to evidence.</p></div></div>
+      <div class="why-item fade-up"><div class="why-icon">🧠</div><div><h3>Stay Informed</h3><p>As AI gets better, so do fakes. Using a detector keeps you one step ahead of manipulated content.</p></div></div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <div class="how-bg">
+    <section id="team">
+      <div class="section-badge fade-up">Team</div>
+      <div class="section-title fade-up">Meet the Creator</div>
+      <p class="section-desc fade-up">DeepFake Detector is built with passion by a developer who believes in a safer, more trustworthy internet for everyone.</p>
+      <div class="team-grid">
+        <div class="team-card fade-up"><div class="team-avatar">👩‍💻</div><h3>Eman Sarfraz</h3><p>Founder & Developer</p></div>
+        <div class="team-card fade-up"><div class="team-avatar">🤖</div><h3>AI Model</h3><p>Deepfake Detection Engine</p></div>
+        <div class="team-card fade-up"><div class="team-avatar">🌐</div><h3>Open Source</h3><p>Built for the community</p></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Faq -->
+  <section id="faq">
+    <div class="section-badge fade-up">FAQ</div>
+    <div class="section-title fade-up">Frequently Asked Questions</div>
+    <p class="section-desc fade-up">Got questions? We have answers.</p>
+    <div class="faq-list">
+      <div class="faq-item fade-up"><button class="faq-q" onclick="toggleFaq(this)">Is DeepFake Detector free to use? <span class="faq-arrow">▼</span></button><div class="faq-a">Yes! DeepFake Detector is completely free to use. Simply upload your video and get instant results with no signup required.</div></div>
+      <div class="faq-item fade-up"><button class="faq-q" onclick="toggleFaq(this)">What video formats are supported? <span class="faq-arrow">▼</span></button><div class="faq-a">We support MP4, MOV, and AVI formats. The maximum file size is 100MB. We recommend using MP4 for the best results.</div></div>
+      <div class="faq-item fade-up"><button class="faq-q" onclick="toggleFaq(this)">Is my video stored after analysis? <span class="faq-arrow">▼</span></button><div class="faq-a">No. Your privacy is our priority. Videos are analyzed in real time and are never stored on our servers. All data is deleted immediately after the result is generated.</div></div>
+      <div class="faq-item fade-up"><button class="faq-q" onclick="toggleFaq(this)">How accurate is the detection? <span class="faq-arrow">▼</span></button><div class="faq-a">Our AI model achieves over 90% accuracy on benchmark tests. However, very sophisticated deepfakes may sometimes be harder to detect.</div></div>
+      <div class="faq-item fade-up"><button class="faq-q" onclick="toggleFaq(this)">Can it detect all types of deepfakes? <span class="faq-arrow">▼</span></button><div class="faq-a">Our tool is best at detecting face-swap deepfakes and AI-generated human videos. It may have lower accuracy on cartoon-style or non-human AI-generated content.</div></div>
+    </div>
+
+  
+  </section>
+  
+
+  <!-- Rating -->
+  <div class="rating-section">
+    <p class="rating-label">Was this result helpful?</p>
+    <div class="stars" id="starRating">
+      <span class="star" onclick="setRating(1)">★</span>
+      <span class="star" onclick="setRating(2)">★</span>
+      <span class="star" onclick="setRating(3)">★</span>
+      <span class="star" onclick="setRating(4)">★</span>
+      <span class="star" onclick="setRating(5)">★</span>
+    </div>
+    <p class="rating-thanks" id="ratingThanks"></p>
+  </div>
+
+
+  <!-- Footer -->
+  <footer>
+    Made with ❤️ by <span>Eman Sarfraz</span> &nbsp;·&nbsp; © 2025 All rights reserved
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
