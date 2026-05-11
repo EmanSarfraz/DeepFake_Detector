@@ -32,9 +32,15 @@ async function analyzeVideo() {
     });
 
     const data = await response.json();
-    scanText.style.display = 'none';
+scanText.style.display = 'none';
 
-    const classes = data.status[0].response.output[0].classes;
+if (data.error) {
+  alert('API Error: ' + data.error);
+  console.log('Raw response:', data.raw);
+  return;
+}
+
+const classes = data.status[0].response.output[0].classes;
     const fakeClass = classes.find(c => c.class === 'yes_deepfake' || c.class === 'ai_generated');
     const confidence = fakeClass ? Math.round(fakeClass.score * 100) : 0;
     const isFake = confidence > 50;
