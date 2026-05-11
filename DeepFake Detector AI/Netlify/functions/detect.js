@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 exports.handler = async (event) => {
   try {
     const { videoBase64, mimeType } = JSON.parse(event.body);
@@ -7,39 +5,36 @@ exports.handler = async (event) => {
     const response = await fetch('https://api.thehive.ai/api/v2/task/sync', {
       method: 'POST',
       headers: {
-        'Authorization': {
-            "statement": [
-              {
-                "key": "models",
-                "action": [
-                  "hive:CallApi"
-                ],
-                "effect": "Allow",
-                "resource": [
-                  "hive:models:sf1:::v3/*",
-                  "hive:models:va1:::v3/*"
-                ]
-              }
-            ]
-          },
+        'Authorization': 'Token ' + process.env.HIVE_API_KEY,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        media: [{
-          url: `data:${mimeType};base64,${videoBase64}`
-        }]
+        media: [{ url: `data:${mimeType};base64,${videoBase64}` }]
       })
     });
 
     const data = await response.json();
+    console.log('Hive response:', JSON.stringify(data));
+
+    // Check response structure
+    if (!data.status || !data.status[0]) {
+      return {
+        statusCode: 200,
+        headers: { 'Access-Control-Allow-Origin': '*' },
+        body: JSON.stringify({ error: 'Invalid API response', raw: data })
+      };
+    }
+
     return {
       statusCode: 200,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify(data)
     };
 
   } catch (error) {
     return {
       statusCode: 500,
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ error: error.message })
     };
   }
