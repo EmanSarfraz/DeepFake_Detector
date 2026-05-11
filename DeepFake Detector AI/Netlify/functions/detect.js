@@ -14,16 +14,6 @@ exports.handler = async (event) => {
     });
 
     const data = await response.json();
-    console.log('Hive response:', JSON.stringify(data));
-
-    // Check response structure
-    if (!data.status || !data.status[0]) {
-      return {
-        statusCode: 200,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify({ error: 'Invalid API response', raw: data })
-      };
-    }
 
     return {
       statusCode: 200,
