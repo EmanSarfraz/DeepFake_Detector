@@ -31,8 +31,10 @@ async function analyzeVideo() {
       body: JSON.stringify({ videoBase64, mimeType: file.type })
     });
 
-    const data = await response.json();
+   const data = await response.json();
 scanText.style.display = 'none';
+
+console.log('API Response:', JSON.stringify(data));
 
 if (data.error) {
   alert('API Error: ' + data.error);
