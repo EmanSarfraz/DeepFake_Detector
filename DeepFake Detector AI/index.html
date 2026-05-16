@@ -22,6 +22,7 @@
       <li><a href="#faq">FAQ</a></li>
     </ul>
   </nav>
+
   <!-- Hero -->
   <div class="hero">
     <div class="badge">AI Video Analyzer</div>
@@ -49,14 +50,25 @@
         <div class="result-label" id="resultLabel"></div>
         <div class="result-desc" id="resultDesc"></div>
         <div class="bar-wrap"><div id="barFill" class="bar-fill"></div></div>
-         <div class="bar-labels">
-         <span id="confidenceVal" style="font-size:22px; font-weight:700; color:#6b4fd4;">0%</span>
-         <span>AI Confidence Score</span>
-        <div>
+        <div class="bar-labels">
+          <span id="confidenceVal" style="font-size:22px; font-weight:700; color:#6b4fd4;">0%</span>
+          <span>AI Confidence Score</span>
+        </div>
+        <div class="rating-section">
+          <p class="rating-label">Was this result helpful?</p>
+          <div class="stars" id="starRating">
+            <span class="star" onclick="setRating(1)">★</span>
+            <span class="star" onclick="setRating(2)">★</span>
+            <span class="star" onclick="setRating(3)">★</span>
+            <span class="star" onclick="setRating(4)">★</span>
+            <span class="star" onclick="setRating(5)">★</span>
+          </div>
+          <p class="rating-thanks" id="ratingThanks"></p>
+        </div>
       </div>
+
     </div>
   </div>
-
 
   <!-- About -->
   <section id="about">
@@ -113,7 +125,7 @@
     </section>
   </div>
 
-  <!-- Faq -->
+  <!-- FAQ -->
   <section id="faq">
     <div class="section-badge fade-up">FAQ</div>
     <div class="section-title fade-up">Frequently Asked Questions</div>
@@ -125,24 +137,7 @@
       <div class="faq-item fade-up"><button class="faq-q" onclick="toggleFaq(this)">How accurate is the detection? <span class="faq-arrow">▼</span></button><div class="faq-a">Our AI model achieves over 90% accuracy on benchmark tests. However, very sophisticated deepfakes may sometimes be harder to detect.</div></div>
       <div class="faq-item fade-up"><button class="faq-q" onclick="toggleFaq(this)">Can it detect all types of deepfakes? <span class="faq-arrow">▼</span></button><div class="faq-a">Our tool is best at detecting face-swap deepfakes and AI-generated human videos. It may have lower accuracy on cartoon-style or non-human AI-generated content.</div></div>
     </div>
-
-  
   </section>
-  
-
-  <!-- Rating -->
-  <div class="rating-section">
-    <p class="rating-label">Was this result helpful?</p>
-    <div class="stars" id="starRating">
-      <span class="star" onclick="setRating(1)">★</span>
-      <span class="star" onclick="setRating(2)">★</span>
-      <span class="star" onclick="setRating(3)">★</span>
-      <span class="star" onclick="setRating(4)">★</span>
-      <span class="star" onclick="setRating(5)">★</span>
-    </div>
-    <p class="rating-thanks" id="ratingThanks"></p>
-  </div>
-
 
   <!-- Footer -->
   <footer>
